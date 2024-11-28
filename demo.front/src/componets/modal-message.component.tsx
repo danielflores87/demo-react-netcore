@@ -13,7 +13,7 @@ import { ButtonComponent } from "./button.component";
 export interface IMessage {
   type?: EResponseCodes;
   title?: string;
-  description?: string;
+  description?: string | JSX.Element;
   okTitle?: string;
   cancelTitle?: string;
   onOk?: () => void;
@@ -72,13 +72,16 @@ function ModalMessageComponent({
           display="Center"
           className="my-2"
         />
-
-        <LabelComponent
-          type="Regular"
-          value={description ?? ""}
-          display="Center"
-          className="my-2"
-        />
+        {typeof description == "string" ? (
+          <LabelComponent
+            type="Regular"
+            value={description ?? ""}
+            display="Center"
+            className="my-2"
+          />
+        ) : (
+          <div>{description}</div>
+        )}
 
         <hr color={color} className="h-0.5 " />
         <ButtonsCardComponent className="mt-2">
