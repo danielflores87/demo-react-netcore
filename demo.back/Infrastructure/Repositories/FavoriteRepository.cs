@@ -14,7 +14,7 @@ namespace demo.back.Infrastructure.Repositories
         }
 
 
-        public async Task<IEnumerable<Favorite>> GetFavoritesByUserId(int id)
+        public async Task<IEnumerable<Favorite>> GetFavoritesByUserIdAsync(int id)
         {
             return await _context.Favorites.Where(u => u.UserId == id).ToListAsync();
         }

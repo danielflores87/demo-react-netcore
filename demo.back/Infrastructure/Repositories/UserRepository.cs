@@ -1,5 +1,4 @@
 ﻿using demo.back.Domain.Entities;
-using demo.back.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using static demo.back.Domain.Interfaces.UserInterfaces;
 
@@ -47,7 +46,7 @@ namespace demo.back.Infrastructure.Data
 
         public async Task DeleteAsync(int id)
         {
-            var user = await GetByIdAsync(id);
+            var user = await _context.Users.FindAsync(id);
             if (user != null)
             {
                 _context.Users.Remove(user);

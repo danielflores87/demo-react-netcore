@@ -7,7 +7,7 @@ namespace demo.back.Domain.Interfaces
 
         public interface IFavoriteRepository
         {
-            Task<IEnumerable<Favorite>> GetFavoritesByUserId(int id);
+            Task<IEnumerable<Favorite>> GetFavoritesByUserIdAsync(int id);
             Task<Favorite> AddAsync(Favorite favorite);
         }
     }

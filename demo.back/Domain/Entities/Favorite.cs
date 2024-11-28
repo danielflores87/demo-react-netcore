@@ -15,6 +15,7 @@ namespace demo.back.Domain.Entities
         [ForeignKey("User")]
         public int UserId { get; set; }
 
+ 
         [Column("FAU_TITULO")]
         [MaxLength(500)]
         public string Titule { get; set; } = string.Empty;

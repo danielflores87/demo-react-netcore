@@ -1,7 +1,5 @@
 ﻿using demo.back.Api.DTOs;
-using demo.back.API.DTOs;
 using demo.back.Application.Services;
-using demo.back.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 

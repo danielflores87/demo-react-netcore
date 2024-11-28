@@ -2,9 +2,11 @@ using demo.back.Application.Services;
 using demo.back.Domain.Entities;
 using demo.back.Infrastructure;
 using demo.back.Infrastructure.Data;
+using demo.back.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using static demo.back.Domain.Interfaces.UserInterfaces;
+using static demo.back.Domain.Interfaces.FavoriteInterfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
@@ -30,8 +32,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Repositorios y Servicios
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<FavoriteService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddHttpClient<MarvelApiService>();
 builder.Services.AddScoped<MarvelApiService>();
