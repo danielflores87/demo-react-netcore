@@ -1,0 +1,81 @@
+# Compiled object files, binaries, and DLLs
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.class
+
+# Visual Studio directories and files
+.vs/
+*.user
+*.suo
+
+# Build directories
+bin/
+obj/
+out/
+
+# Rider and VS Code directories
+.idea/
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# User-specific files
+*.userprefs
+*.DS_Store
+Thumbs.db
+
+# Resharper and Rider settings
+*.sln.iml
+_ReSharper.Caches/
+
+# Test results
+TestResults/
+
+# Dependencies
+*.nuget
+packages/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.lock
+*.orig
+*.coverage
+
+# Configurations
+#appsettings.*.json
+#appsettings.json
+
+# Publish artifacts
+publish/
+wwwroot/
+
+# Secrets
+secrets.json
+.env
+
+
+# Generated files
+*.g.*
+*.generated.cs
+Generated/
+
+# Docker
+*.pid
+*.tar
+Dockerfile
+docker-compose*
+
+# OS files
+*.swp
+*.swn
+*.swo
+*.pyc
+*.pyo
