@@ -16,10 +16,8 @@ Backend (API en .NET Core 8):
   3. Levanta la API:
      dotnet run
   4. (Opcional) Si cambias la base de datos
-    Instala la herramienta de Entity Framework:
-      dotnet tool install --global dotnet-ef
-    Aplica las migraciones:
-      dotnet ef database update
+     -  Instala la herramienta de Entity Framework: "dotnet tool install --global dotnet-ef"
+     -  Aplica las migraciones: "dotnet ef database update"
      
 Frontend (Aplicación en React):
   1. Ingresa al directorio del frontend
