@@ -7,7 +7,8 @@ export interface IComic {
   };
   prices: {
     price: number;
-  };
+    type: string;
+  }[];
   characters: {
     items: {
       name: string;
@@ -16,10 +17,8 @@ export interface IComic {
   };
 }
 
-
 export interface IComicFilter {
   title?: string;
   perPage: number;
   page: number;
 }
-

@@ -51,11 +51,13 @@ export function HeaderComponent() {
                 type: EResponseCodes.OK,
                 title: `Comics Favoritos`,
                 description: (
-                  <ul>
-                    {favorites.map((i: IFavorite) => {
-                      return <li>{i.titule}</li>;
-                    })}
-                  </ul>
+                  <div className="max-h-[400px] overflow-y-auto border border-gray-300 p-4">
+                    <ul>
+                      {favorites.map((i: IFavorite) => {
+                        return <li key={i.id}>{i.titule}</li>;
+                      })}
+                    </ul>
+                  </div>
                 ),
                 onOk() {
                   setMessage(null);

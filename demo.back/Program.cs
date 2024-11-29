@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using static demo.back.Domain.Interfaces.UserInterfaces;
 using static demo.back.Domain.Interfaces.FavoriteInterfaces;
+using demo.back.Application.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
@@ -40,7 +41,11 @@ builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddHttpClient<MarvelApiService>();
 builder.Services.AddScoped<MarvelApiService>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<GlobalExceptionFilter>(); 
+});
+
 
 
 var app = builder.Build();

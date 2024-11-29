@@ -37,5 +37,12 @@ namespace demo.back.API.Controllers
             var result = await _userService.GetUsersPaginatedAsync(request.Name, request.Email, request.PerPage, request.Page);
             return Ok(result);
         }
+
+
+        [HttpDelete("delete-user/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            throw new NotImplementedException("Api: Metodo no Implementado...");
+        }
     }
 }

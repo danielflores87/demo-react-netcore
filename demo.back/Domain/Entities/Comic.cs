@@ -8,6 +8,16 @@ namespace demo.back.Domain.Entities
         public Thumbnail Thumbnail { get; set; }
 
         public Characters Characters { get; set; }
+
+        public List<PriceItems> Prices { get; set; }
+    }
+
+
+    public class PriceItems
+    {
+        public string Type { get; set; }
+        public float Price { get; set; }
+
     }
 
     public class Thumbnail

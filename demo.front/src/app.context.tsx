@@ -28,7 +28,7 @@ export const AppContext = createContext<IAppContext>({
   authorization: {} as IUserAuth,
   setAuthorization: () => {},
   validateActionAccess: () => false,
-  favorites: [],
+  favorites: [] as IFavorite[],
   setFavorites: () => {},
 });
 
@@ -45,7 +45,7 @@ export function AppContextProvider({ children }: Readonly<IProps>) {
   function validateActionAccess(_indicator: string): boolean {
     return true;
   }
-
+  console.log(favorites)
   useEffect(() => {
     if (authorization.user) {
       getFavoritesByUserId(authorization.user.id).then((res) => {
@@ -62,7 +62,7 @@ export function AppContextProvider({ children }: Readonly<IProps>) {
       setFavorites,
       validateActionAccess,
     };
-  }, [authorization]);
+  }, [authorization, favorites]);
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
 }

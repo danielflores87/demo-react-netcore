@@ -11,6 +11,8 @@ import { ButtonComponent } from "../componets/button.component";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { AppContext } from "../app.context";
 import useFavoriteService from "../hooks/favorite-service.hook";
+import { BsBookmarkStarFill } from "react-icons/bs";
+import LabelComponent from "../componets/label.component";
 
 function HomePage(): JSX.Element {
   // Services
@@ -63,7 +65,10 @@ function HomePage(): JSX.Element {
     });
 
     if (res.operation.code == EResponseCodes.OK) {
-      setFavorites((state) => [...state, res.data]);
+      setFavorites((prev) => {
+        const updated = [...prev, res.data];
+        return updated;
+      });
     } else {
       setMessage({
         type: res.operation.code,
@@ -76,6 +81,35 @@ function HomePage(): JSX.Element {
     }
 
     setAdding(null);
+  }
+
+  function showDetail(comic: IComic) {
+    setMessage({
+      title: comic.title,
+      description: (
+        <div className="max-h-[400px] overflow-y-auto border border-gray-300 p-4">
+          
+          
+          <LabelComponent type="SubTitle" value={"Precios"} />
+
+          <ul>
+            {comic.prices?.map((i) => {
+              return <li key={i.type}>{i.type} : ${i.price}</li>;
+            })}
+          </ul>
+
+          <LabelComponent className="mt-4" type="SubTitle" value={"Personajes"} />
+          <ul>
+            {comic.characters.items.map((i) => {
+              return <li key={i.name}>{i.name}</li>;
+            })}
+          </ul>
+        </div>
+      ),
+      onOk() {
+        setMessage(null);
+      },
+    });
   }
 
   return (
@@ -108,9 +142,14 @@ function HomePage(): JSX.Element {
                     src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                     alt={comic.title}
                     className="absolute inset-0 w-full h-full object-cover"
+                    onClick={() => showDetail(comic)}
                   />
 
-                  {!favorites.some((i) => i.codeComic == comic.id) && (
+                  {favorites.some((i) => i.codeComic == comic.id) ? (
+                    <div className="absolute top-2 right-2 text-yellow-500">
+                      <BsBookmarkStarFill size={32} />
+                    </div>
+                  ) : (
                     <ButtonComponent
                       className="absolute top-2 right-2"
                       value=""

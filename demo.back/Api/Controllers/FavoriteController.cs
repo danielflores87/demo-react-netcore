@@ -24,7 +24,7 @@ namespace demo.back.Api.Controllers
                 UserId = dto.UserId,
                 Titule = dto.Titule,
                 CodeComic = dto.CodeComic,
-                Date = DateTime.Now
+                Date = DateTime.UtcNow
             };
 
             var res = await _favoriteService.AddFavoriteAsync(favorite);
